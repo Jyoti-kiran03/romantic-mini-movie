@@ -1,0 +1,229 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #ff6a88, #ff99ac);
+  text-align: center;
+  color: white;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.intro {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  min-height: 50px;
+}
+
+/* Slideshow */
+.slideshow {
+  width: 280px;
+  height: 280px;
+  margin: 20px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid white;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+.slides {
+  width: 100%;
+  height: 100%;
+  display: none;
+  object-fit: cover;
+}
+
+/* Timeline */
+.timeline {
+  max-width: 500px;
+  margin: 25px auto;
+}
+
+.event {
+  background: rgba(255,255,255,0.25);
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 15px;
+}
+
+/* Button */
+button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 30px;
+  background: #ff1744;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #d50000;
+}
+
+#surprise {
+  margin-top: 25px;
+  background: rgba(255,255,255,0.3);
+  padding: 25px;
+  border-radius: 20px;
+  animation: fade 1s;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fade {
+  from {opacity:0; transform: scale(0.85);}
+  to {opacity:1; transform: scale(1);}
+}
+
+/* Floating hearts */
+.hearts::before {
+  content: "💖 💕 ❤️ 💗 💓 💞";
+  position: fixed;
+  top: 100%;
+  font-size: 45px;
+  width: 100%;
+  animation: float 9s linear infinite;
+}
+
+@keyframes float {
+  0% {top:100%;}
+  100% {top:-10%;}
+}
+
+/* Falling roses */
+.roses::before {
+  content: "🌹 🌸 🌹 🌸 🌹";
+  position: fixed;
+  top: -10%;
+  font-size: 35px;
+  width: 100%;
+  animation: fall 8s linear infinite;
+}
+
+@keyframes fall {
+  0% {top:-10%;}
+  100% {top:110%;}
+}
+/* Heart Opening Animation */
+.heart-box {
+  animation: heartOpen 1.2s ease-in-out;
+}
+
+@keyframes heartOpen {
+  0% {transform: scale(0);}
+  60% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+}
+
+.heart-animation {
+  font-size: 60px;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.3);}
+  100% {transform: scale(1);}
+}
+
+/* Love Letter Unfold Animation */
+.letter {
+  margin-top: 15px;
+  background: rgba(255,255,255,0.35);
+  padding: 20px;
+  border-radius: 20px;
+  animation: unfold 1.5s ease-in-out;
+}
+
+@keyframes unfold {
+  from {transform: rotateX(90deg); opacity: 0;}
+  to {transform: rotateX(0deg); opacity: 1;}
+}
+
+/* Sparkle Effect */
+.sparkle::after {
+  content: "✨ ✨ ✨ ✨ ✨";
+  display: block;
+  font-size: 24px;
+  margin-top: 10px;
+  animation: sparkle 1.2s infinite alternate;
+}
+
+@keyframes sparkle {
+  from {opacity: 0.4;}
+  to {opacity: 1;}
+}
+/* CINEMATIC INTRO */
+.cinematic-intro {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #000, #200);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 1.5s;
+}
+
+.cinema-title {
+  font-size: 3.5em;
+  letter-spacing: 3px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px red; }
+  to { text-shadow: 0 0 30px hotpink; }
+}
+
+.cinematic-intro button {
+  margin-top: 25px;
+  padding: 15px 45px;
+  font-size: 1.3em;
+  border-radius: 40px;
+  background: crimson;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* SPARKLES */
+.sparkles::before {
+  content: "✨ ✨ ✨ ✨ ✨ ✨ ✨";
+  position: fixed;
+  width: 100%;
+  top: 50%;
+  font-size: 35px;
+  animation: sparkleFloat 6s linear infinite;
+}
+
+@keyframes sparkleFloat {
+  from { transform: translateY(0); opacity: 0.4; }
+  to { transform: translateY(-400px); opacity: 1; }
+}
+
+/* CINEMATIC FADE */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
