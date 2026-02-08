@@ -331,20 +331,33 @@ button:hover {
 
 .petals span {
   position: fixed;
-  top: -50px;
-  width: 35px;
-  height: 35px;
-  background-image: url("https://cdn-icons-png.flaticon.com/512/3534/3534033.png");
-  background-size: cover;
-  animation: fall linear infinite;
-  opacity: 0.9;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  pointer-events: none;
+
+  animation:
+    cinematicFall 7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
+    glow 2s ease-in-out infinite alternate;
 }
 
-@keyframes fall {
+@keyframes cinematicFall {
+  from {
+    transform: translate(-50%, -60px) scale(0.8);
+    opacity: 0;
+  }
   to {
-    transform: translateY(110vh) rotate(360deg);
+    transform: translate(-50%, 110vh) scale(1.05);
+    opacity: 1;
   }
 }
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 8px hotpink); }
+  to   { filter: drop-shadow(0 0 20px deeppink); }
+}
+
 
 
 
