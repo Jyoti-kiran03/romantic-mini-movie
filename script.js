@@ -37,3 +37,33 @@ function typeWriter() {
     setTimeout(typeWriter, 70);
   }
 }
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+/* Make NO button float away */
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+/* After 4 seconds remove NO completely */
+setTimeout(() => {
+  noBtn.style.display = "none";
+}, 4000);
+
+/* YES click → flower bloom → next page */
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="text-align:center;color:white;">
+      <h1>My Heart Is Open For You 💐</h1>
+      <div class="flower"></div>
+    </div>
+  `;
+
+  setTimeout(() => {
+    window.location.href = "message.html";
+  }, 3000);
+});
+
