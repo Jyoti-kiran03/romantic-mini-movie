@@ -15,9 +15,8 @@ function showSurprise() {
 
   setTimeout(() => {
     attachHeartLogic();
-  }, 100);
+  }, 200);
 }
-
 
 /* Slideshow */
 let slideIndex = 0;
@@ -36,6 +35,7 @@ function showSlides() {
 /* Typewriter */
 const text = "Mummy & Papa, your love is the reason I believe in forever ❤️";
 let i = 0;
+
 function typeWriter() {
   if (i < text.length) {
     document.getElementById("typewriter").innerHTML += text.charAt(i);
@@ -44,86 +44,16 @@ function typeWriter() {
   }
 }
 
-function openMyHeart() {
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
-
-  /* Floating NO button */
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-  });
-
-  /* Remove NO after 4 seconds */
-  setTimeout(() => {
-    noBtn.style.display = "none";
-  }, 4000);
-
-  /* YES click → flower → next page */
-  yesBtn.addEventListener("click", () => {
-    document.body.innerHTML = `
-      <div style="text-align:center;color:white;">
-        <h1>My Heart Is Open For You 💐</h1>
-        <div class="flower"></div>
-      </div>
-    `;
-
-    setTimeout(() => {
-      window.location.href = "message.html";
-    }, 3000);
-  });
-}
+/* HEART INTERACTION */
 function attachHeartLogic() {
 
   const noBtn = document.getElementById("noBtn");
   const yesBtn = document.getElementById("yesBtn");
-
-  if (!noBtn || !yesBtn) return;
-
-  /* Floating NO button */
-  noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
-
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-  });
-
-  /* Remove NO after 4 seconds */
-  setTimeout(() => {
-    noBtn.style.display = "none";
-  }, 4000);
-
-  /* YES → flower → next page */
-yesBtn.addEventListener("click", () => {
-
-  document.getElementById("bgm").pause();
-
   const heartMusic = document.getElementById("heartMusic");
-  heartMusic.volume = 0.7;
-  heartMusic.play();
-
-  document.getElementById("surprise").innerHTML = `
-    <h1>My Heart Is Open For You 💐</h1>
-    <div class="flower"></div>
-  `;
-
-  setTimeout(() => {
-    window.location.href = "message.html";
-  }, 4000);
-});
-
-}
-function attachHeartLogic() {
-
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
 
   if (!noBtn || !yesBtn) return;
 
-  // NO button floating
+  /* Floating NO */
   noBtn.addEventListener("mouseenter", () => {
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 120);
@@ -132,40 +62,38 @@ function attachHeartLogic() {
     noBtn.style.top = y + "px";
   });
 
-  // Remove NO after 10 seconds
+  /* Remove NO after 4 sec */
   setTimeout(() => {
     noBtn.style.display = "none";
   }, 4000);
 
-  // YES click → flower → next page
+  /* YES CLICK */
   yesBtn.addEventListener("click", () => {
+
+    document.getElementById("bgm").pause();
+
+    heartMusic.currentTime = 0;
+    heartMusic.volume = 0.9;
+    heartMusic.play();
+
     document.getElementById("surprise").innerHTML = `
       <h1>My Heart Is Open For You 💐</h1>
       <div class="flower"></div>
+      <div class="petals"></div>
     `;
+let heartCreated = false;
 
-    setTimeout(() => {
-      window.location.href = "message.html";
-    }, 3000);
-  });
-}
-function showSurprise() {
-  document.getElementById("surprise").classList.remove("hidden");
+function createSingleFallingHeart() {
+  if (heartCreated) return;   // ❌ stop duplicates
 
-  setTimeout(() => {
-    attachHeartLogic();
-  }, 200);
-}
-/* Falling Rose Petals */
+  heartCreated = true;
 
-if (document.querySelector(".petals")) {
   const box = document.querySelector(".petals");
+  if (!box) return;
 
   const heart = document.createElement("span");
   heart.innerHTML = "💖";
 
   box.appendChild(heart);
 }
-
-
 
