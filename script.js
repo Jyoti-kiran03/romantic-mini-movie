@@ -151,16 +151,12 @@ function showSurprise() {
 /* Falling Rose Petals */
 
 if (document.querySelector(".petals")) {
-  for (let i = 0; i < 30; i++) {
-    let petal = document.createElement("span");
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.animationDuration = 5 + Math.random() * 6 + "s";
-    petal.style.opacity = Math.random();
-    petal.style.transform = `scale(${0.5 + Math.random()})`;
+  const box = document.querySelector(".petals");
 
-    document.querySelector(".petals").appendChild(petal);
-  }
+  const heart = document.createElement("span");
+  heart.innerHTML = "💖";
+
+  box.appendChild(heart);
 }
-
 
 
