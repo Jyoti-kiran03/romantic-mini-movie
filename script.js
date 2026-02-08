@@ -124,7 +124,7 @@ function attachHeartLogic() {
     noBtn.style.top = y + "px";
   });
 
-  // Remove NO after 4 seconds
+  // Remove NO after 10 seconds
   setTimeout(() => {
     noBtn.style.display = "none";
   }, 4000);
@@ -148,5 +148,19 @@ function showSurprise() {
     attachHeartLogic();
   }, 200);
 }
+/* Falling Rose Petals */
+
+if (document.querySelector(".petals")) {
+  for (let i = 0; i < 30; i++) {
+    let petal = document.createElement("span");
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.animationDuration = 5 + Math.random() * 6 + "s";
+    petal.style.opacity = Math.random();
+    petal.style.transform = `scale(${0.5 + Math.random()})`;
+
+    document.querySelector(".petals").appendChild(petal);
+  }
+}
+
 
 
