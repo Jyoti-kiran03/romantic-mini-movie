@@ -97,16 +97,24 @@ function attachHeartLogic() {
   }, 4000);
 
   /* YES → flower → next page */
-  yesBtn.addEventListener("click", () => {
-    document.getElementById("surprise").innerHTML = `
-      <h1>My Heart Is Open For You 💐</h1>
-      <div class="flower"></div>
-    `;
+yesBtn.addEventListener("click", () => {
 
-    setTimeout(() => {
-      window.location.href = "message.html";
-    }, 3000);
-  });
+  document.getElementById("bgm").pause();
+
+  const heartMusic = document.getElementById("heartMusic");
+  heartMusic.volume = 0.7;
+  heartMusic.play();
+
+  document.getElementById("surprise").innerHTML = `
+    <h1>My Heart Is Open For You 💐</h1>
+    <div class="flower"></div>
+  `;
+
+  setTimeout(() => {
+    window.location.href = "message.html";
+  }, 4000);
+});
+
 }
 function attachHeartLogic() {
 
@@ -158,5 +166,6 @@ if (document.querySelector(".petals")) {
 
   box.appendChild(heart);
 }
+
 
 
