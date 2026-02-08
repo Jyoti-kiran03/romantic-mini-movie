@@ -10,8 +10,14 @@ function startMovie() {
 
 /* Surprise */
 function showSurprise() {
-  document.getElementById("surprise").classList.toggle("hidden");
+  const surpriseBox = document.getElementById("surprise");
+  surpriseBox.classList.remove("hidden");
+
+  setTimeout(() => {
+    attachHeartLogic();
+  }, 100);
 }
+
 
 /* Slideshow */
 let slideIndex = 0;
@@ -69,3 +75,37 @@ function openMyHeart() {
     }, 3000);
   });
 }
+function attachHeartLogic() {
+
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+
+  if (!noBtn || !yesBtn) return;
+
+  /* Floating NO button */
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 120);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  /* Remove NO after 4 seconds */
+  setTimeout(() => {
+    noBtn.style.display = "none";
+  }, 4000);
+
+  /* YES → flower → next page */
+  yesBtn.addEventListener("click", () => {
+    document.getElementById("surprise").innerHTML = `
+      <h1>My Heart Is Open For You 💐</h1>
+      <div class="flower"></div>
+    `;
+
+    setTimeout(() => {
+      window.location.href = "message.html";
+    }, 3000);
+  });
+}
+
