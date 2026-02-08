@@ -1,366 +1,86 @@
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg, #ff6a88, #ff99ac);
-  text-align: center;
-  color: white;
-  overflow-x: hidden;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-.container {
-  padding: 30px;
-  position: relative;
-  z-index: 2;
-}
+  const startBtn = document.getElementById("startBtn");
+  const main = document.getElementById("main");
+  const intro = document.getElementById("intro");
+  const bgm = document.getElementById("bgm");
+  const heartMusic = document.getElementById("heartMusic");
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const surprise = document.getElementById("surprise");
 
-h1 {
-  font-size: 3em;
-}
+  // START BUTTON
+  startBtn.addEventListener("click", () => {
+    intro.style.display = "none";
+    main.classList.remove("hidden");
+    bgm.play();
+    typeWriter();
+    showSlides();
+  });
 
-h2 {
-  font-weight: 400;
-}
-
-.intro {
-  font-size: 1.2em;
-  margin-bottom: 25px;
-  min-height: 50px;
-}
-
-/* Slideshow */
-.slideshow {
-  width: 280px;
-  height: 280px;
-  margin: 20px auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 5px solid white;
-  box-shadow: 0 0 15px rgba(255,255,255,0.6);
-}
-
-.slides {
-  width: 100%;
-  height: 100%;
-  display: none;
-  object-fit: cover;
-}
-
-/* Timeline */
-.timeline {
-  max-width: 500px;
-  margin: 25px auto;
-}
-
-.event {
-  background: rgba(255,255,255,0.25);
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 15px;
-}
-
-/* Button */
-button {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 1.1em;
-  border: none;
-  border-radius: 30px;
-  background: #ff1744;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #d50000;
-}
-
-#surprise {
-  margin-top: 25px;
-  background: rgba(255,255,255,0.3);
-  padding: 25px;
-  border-radius: 20px;
-  animation: fade 1s;
-}
-
-.hidden {
-  display: none;
-}
-
-@keyframes fade {
-  from {opacity:0; transform: scale(0.85);}
-  to {opacity:1; transform: scale(1);}
-}
-
-/* Floating hearts */
-.hearts::before {
-  content: "💖 💕 ❤️ 💗 💓 💞";
-  position: fixed;
-  top: 100%;
-  font-size: 45px;
-  width: 100%;
-  animation: float 9s linear infinite;
-}
-
-@keyframes float {
-  0% {top:100%;}
-  100% {top:-10%;}
-}
-
-/* Falling roses */
-.roses::before {
-  content: "🌹 🌸 🌹 🌸 🌹";
-  position: fixed;
-  top: -10%;
-  font-size: 35px;
-  width: 100%;
-  animation: fall 8s linear infinite;
-}
-
-@keyframes fall {
-  0% {top:-10%;}
-  100% {top:110%;}
-}
-/* Heart Opening Animation */
-.heart-box {
-  animation: heartOpen 1.2s ease-in-out;
-}
-
-@keyframes heartOpen {
-  0% {transform: scale(0);}
-  60% {transform: scale(1.2);}
-  100% {transform: scale(1);}
-}
-
-.heart-animation {
-  font-size: 60px;
-  animation: pulse 1.2s infinite;
-}
-
-@keyframes pulse {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.3);}
-  100% {transform: scale(1);}
-}
-
-/* Love Letter Unfold Animation */
-.letter {
-  margin-top: 15px;
-  background: rgba(255,255,255,0.35);
-  padding: 20px;
-  border-radius: 20px;
-  animation: unfold 1.5s ease-in-out;
-}
-
-@keyframes unfold {
-  from {transform: rotateX(90deg); opacity: 0;}
-  to {transform: rotateX(0deg); opacity: 1;}
-}
-
-/* Sparkle Effect */
-.sparkle::after {
-  content: "✨ ✨ ✨ ✨ ✨";
-  display: block;
-  font-size: 24px;
-  margin-top: 10px;
-  animation: sparkle 1.2s infinite alternate;
-}
-
-@keyframes sparkle {
-  from {opacity: 0.4;}
-  to {opacity: 1;}
-}
-/* CINEMATIC INTRO */
-.cinematic-intro {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, #000, #200);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  animation: fadeIn 1.5s;
-}
-
-.cinema-title {
-  font-size: 3.5em;
-  letter-spacing: 3px;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px red; }
-  to { text-shadow: 0 0 30px hotpink; }
-}
-
-.cinematic-intro button {
-  margin-top: 25px;
-  padding: 15px 45px;
-  font-size: 1.3em;
-  border-radius: 40px;
-  background: crimson;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-/* SPARKLES */
-.sparkles::before {
-  content: "✨ ✨ ✨ ✨ ✨ ✨ ✨";
-  position: fixed;
-  width: 100%;
-  top: 50%;
-  font-size: 35px;
-  animation: sparkleFloat 6s linear infinite;
-}
-
-@keyframes sparkleFloat {
-  from { transform: translateY(0); opacity: 0.4; }
-  to { transform: translateY(-400px); opacity: 1; }
-}
-
-/* CINEMATIC FADE */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.flower {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle, pink, hotpink);
-  margin: 20px auto;
-  animation: bloom 2.5s infinite;
-}
-
-@keyframes bloom {
-  0% { transform: scale(0); }
-  100% { transform: scale(1.4); }
-}
-/* YES / NO Buttons - Open My Heart Interaction */
-.buttons {
-  position: relative;
-  height: 140px;
-  margin-top: 20px;
-}
-
-#yesBtn {
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  background: #00ffb3;
-  color: black;
-  cursor: pointer;
-  z-index: 5;
-}
-
-#noBtn {
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  background: crimson;
-  color: white;
-  cursor: pointer;
-  position: absolute;
-  left: 140px;
-}
-.hidden {
-  display: none;
-}
-
-.btn-box {
-  margin-top: 20px;
-  position: relative;
-  height: 120px;
-}
-
-#yesBtn {
-  padding: 12px 25px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-#noBtn {
-  padding: 12px 25px;
-  font-size: 18px;
-  cursor: pointer;
-  position: absolute;
-  transition: 0.2s;
-}
-
-/* FINAL PAGE */
-
-.final-page {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(to bottom, #180018, #3a003a);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.final-box {
-  z-index: 5;
-  background: rgba(255,255,255,0.1);
-  padding: 35px 45px;
-  border-radius: 18px;
-  text-align: center;
-  max-width: 600px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 30px rgba(255,0,120,0.4);
-  animation: fadeIn 2s ease;
-}
-
-.final-msg {
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform: scale(0.9);}
-  to {opacity:1; transform: scale(1);}
-}
-
-/* Falling Rose Petals */
-
-.petals span {
-  position: fixed;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 60px;
-  pointer-events: none;
-
-  animation:
-    cinematicFall 7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
-    glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes cinematicFall {
-  from {
-    transform: translate(-50%, -60px) scale(0.8);
-    opacity: 0;
+  // TYPEWRITER
+  const text = "Mummy & Papa, your love is the reason I believe in forever ❤️";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typewriter").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 70);
+    }
   }
-  to {
-    transform: translate(-50%, 110vh) scale(1.05);
-    opacity: 1;
+
+  // SLIDESHOW
+  let slideIndex = 0;
+  function showSlides() {
+    const slides = document.getElementsByClassName("slides");
+    for (let s of slides) s.style.display = "none";
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2500);
   }
-}
 
-@keyframes glow {
-  from { filter: drop-shadow(0 0 8px hotpink); }
-  to   { filter: drop-shadow(0 0 20px deeppink); }
-}
+  // SHOW SURPRISE (YES / NO buttons)
+  window.showSurprise = function() {
+    surprise.classList.remove("hidden");
+  }
 
+  // NO button floating
+  noBtn.addEventListener("mouseenter", () => {
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
+  });
+  setTimeout(() => { noBtn.style.display = "none"; }, 4000);
 
+  // YES button click
+  yesBtn.addEventListener("click", () => {
+    bgm.pause();
+    heartMusic.currentTime = 0;
+    heartMusic.volume = 0.7;
+    heartMusic.play();
 
+    surprise.innerHTML = `
+      <h1>My Heart Is Open For You 💐</h1>
+      <div class="flower"></div>
+      <div class="petals"></div>
+    `;
 
+    createFallingHeart();
 
+    setTimeout(() => {
+      window.location.href = "message.html";
+    }, 6000);
+  });
 
+  // FALLING HEART
+  function createFallingHeart() {
+    const box = document.querySelector(".petals");
+    if (!box) return;
 
+    const heart = document.createElement("span");
+    heart.innerHTML = "💖";
+    box.appendChild(heart);
+  }
+
+});
