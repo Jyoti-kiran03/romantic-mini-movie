@@ -238,6 +238,36 @@ button:hover {
   0% { transform: scale(0); }
   100% { transform: scale(1.4); }
 }
+/* YES / NO Buttons - Open My Heart Interaction */
+.buttons {
+  position: relative;
+  height: 140px;
+  margin-top: 20px;
+}
+
+#yesBtn {
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: #00ffb3;
+  color: black;
+  cursor: pointer;
+  z-index: 5;
+}
+
+#noBtn {
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: crimson;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  left: 140px;
+}
+
 
 
 
