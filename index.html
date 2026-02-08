@@ -7,14 +7,21 @@
 </head>
 <body>
 
-<audio id="bgm" loop>
+<!-- Background Music -->
+<audio id="bgm" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Heart Music -->
+<audio id="heartMusic" loop preload="auto">
+  <source src="heart-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Cinematic Intro -->
 <div class="cinematic-intro" id="intro">
   <h1 class="cinema-title">💖 A Love Story 💖</h1>
   <p>Dedicated to the most beautiful parents in the world</p>
-  <button onclick="startMovie()">▶ Start</button>
+  <button id="startBtn">▶ Start</button>
 </div>
 
 <div class="hearts"></div>
@@ -23,41 +30,40 @@
 
 <div class="container hidden" id="main">
 
-<h1>💖 Happy Valentine’s Week 💖</h1>
-<h2>To My Loving Parents</h2>
+  <h1>💖 Happy Valentine’s Week 💖</h1>
+  <h2>To My Loving Parents</h2>
 
-<p class="intro" id="typewriter"></p>
+  <p class="intro" id="typewriter"></p>
 
-<div class="slideshow">
-  <img class="slides" src="img1.jpg">
-  <img class="slides" src="img2.jpg">
-  <img class="slides" src="img3.jpg">
-</div>
-
-<h2>💞 Your Beautiful Journey 💞</h2>
-
-<div class="timeline">
-  <div class="event">💍 Wedding Day — Two hearts became one</div>
-  <div class="event">🏡 Building Home — Love created our family</div>
-  <div class="event">👶 My Birth — Your love gave me life</div>
-  <div class="event">🌈 Today — Still deeply in love</div>
-</div>
-
-<button onclick="showSurprise()">💖 Open My Heart</button>
-<div id="surprise" class="hidden">
-  <h2>Will you open my heart? 💖</h2>
-
-  <div class="btn-box">
-    <button id="yesBtn">Yes 💕</button>
-    <button id="noBtn">No 💔</button>
+  <div class="slideshow">
+    <img class="slides" src="img1.jpg">
+    <img class="slides" src="img2.jpg">
+    <img class="slides" src="img3.jpg">
   </div>
+
+  <h2>💞 Your Beautiful Journey 💞</h2>
+
+  <div class="timeline">
+    <div class="event">💍 Wedding Day — Two hearts became one</div>
+    <div class="event">🏡 Building Home — Love created our family</div>
+    <div class="event">👶 My Birth — Your love gave me life</div>
+    <div class="event">🌈 Today — Still deeply in love</div>
+  </div>
+
+  <button onclick="showSurprise()">💖 Open My Heart</button>
+
+  <div id="surprise" class="hidden">
+    <h2>Will you open my heart? 💖</h2>
+    <div class="btn-box">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">No 💔</button>
+    </div>
+  </div>
+
 </div>
 
-
+<!-- Script -->
 <script src="script.js"></script>
-  <audio id="heartMusic" loop>
-  <source src="heart-music.mp3" type="audio/mpeg">
-</audio>
 
 </body>
 </html>
