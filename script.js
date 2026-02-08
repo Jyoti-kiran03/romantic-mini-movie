@@ -108,4 +108,45 @@ function attachHeartLogic() {
     }, 3000);
   });
 }
+function attachHeartLogic() {
+
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+
+  if (!noBtn || !yesBtn) return;
+
+  // NO button floating
+  noBtn.addEventListener("mouseenter", () => {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 120);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  // Remove NO after 4 seconds
+  setTimeout(() => {
+    noBtn.style.display = "none";
+  }, 4000);
+
+  // YES click → flower → next page
+  yesBtn.addEventListener("click", () => {
+    document.getElementById("surprise").innerHTML = `
+      <h1>My Heart Is Open For You 💐</h1>
+      <div class="flower"></div>
+    `;
+
+    setTimeout(() => {
+      window.location.href = "message.html";
+    }, 3000);
+  });
+}
+function showSurprise() {
+  document.getElementById("surprise").classList.remove("hidden");
+
+  setTimeout(() => {
+    attachHeartLogic();
+  }, 200);
+}
+
 
