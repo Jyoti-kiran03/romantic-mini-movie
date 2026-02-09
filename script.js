@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const intro = document.getElementById("intro");
   const main = document.getElementById("main");
   const bgm = document.getElementById("bgm");
-  const heartMusic = document.getElementById("heartMusic");
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
 
   /* START BUTTON */
   startBtn.addEventListener("click", () => {
@@ -23,6 +20,62 @@ document.addEventListener("DOMContentLoaded", () => {
       createHearts();
     }, 1200);
   });
+
+});
+
+
+/* TYPEWRITER */
+const text = "Mummy & Papa, your love is my strength, my happiness, and my entire world. This small gift carries big emotions just for you 💖";
+let index = 0;
+
+function startTyping() {
+  if (index < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(startTyping, 60);
+  }
+}
+
+
+/* SLIDESHOW */
+let slideIndex = 0;
+
+function startSlides() {
+  const slides = document.querySelectorAll(".slides");
+  slides.forEach(slide => slide.style.display = "none");
+
+  slideIndex++;
+  if (slideIndex > slides.length) slideIndex = 1;
+
+  slides[slideIndex - 1].style.display = "block";
+  setTimeout(startSlides, 2500);
+}
+
+
+/* HEART BACKGROUND */
+function createHearts() {
+  setInterval(() => {
+    let heart = document.createElement("span");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+    document.querySelector(".hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+  }, 250);
+}
+
+
+/* SHOW SURPRISE */
+function showSurprise() {
+  document.getElementById("surprise").classList.remove("hidden");
+
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const heartMusic = document.getElementById("heartMusic");
+  const bgm = document.getElementById("bgm");
 
   /* YES BUTTON */
   yesBtn.addEventListener("click", () => {
@@ -45,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 6000);
   });
 
-  /* FLOATING NO BUTTON */
+  /* NO BUTTON FLOAT */
   noBtn.addEventListener("mouseenter", () => {
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 120);
@@ -57,49 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     noBtn.style.display = "none";
   }, 4000);
-
-});
-
-/* TYPEWRITER */
-const text = "Mummy & Papa, your love is my strength, my happiness, and my entire world. This small gift carries big emotions just for you 💖";
-let index = 0;
-
-function startTyping() {
-  if (index < text.length) {
-    document.getElementById("typewriter").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(startTyping, 60);
-  }
 }
 
-/* SLIDESHOW */
-let slideIndex = 0;
-
-function startSlides() {
-  const slides = document.querySelectorAll(".slides");
-  slides.forEach(slide => slide.style.display = "none");
-
-  slideIndex++;
-  if (slideIndex > slides.length) slideIndex = 1;
-
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(startSlides, 2500);
-}
-
-/* HEART BACKGROUND */
-function createHearts() {
-  setInterval(() => {
-    let heart = document.createElement("span");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    heart.style.animationDuration = Math.random() * 5 + 5 + "s";
-
-    document.querySelector(".hearts").appendChild(heart);
-
-    setTimeout(() => heart.remove(), 10000);
-  }, 250);
-}
 
 /* SINGLE CINEMATIC FALLING HEART */
 function createSingleFallingHeart() {
@@ -120,9 +132,4 @@ function createSingleFallingHeart() {
   setTimeout(() => {
     heart.style.transform = "translateY(110vh) rotate(360deg)";
   }, 100);
-}
-
-/* SHOW SURPRISE */
-function showSurprise() {
-  document.getElementById("surprise").classList.remove("hidden");
 }
