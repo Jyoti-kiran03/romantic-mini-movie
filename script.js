@@ -8,7 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   /* YES / NO BUTTON LOGIC */
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");
-
+  const music = document.getElementById("bgMusic");
+  
+  document.body.addEventListener("click", () => {
+  music.play();
+});
+  
   yesBtn.addEventListener("click", () => {
     // Stop background music
     document.getElementById("bgm").pause();
@@ -63,15 +68,17 @@ function startMovie() {
 }
 
 /* TYPEWRITER */
-let i = 0;
-const text = "Mummy & Papa, your love is the reason I believe in forever ❤️";
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("typewriter").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 70);
+const text = "Mummy & Papa, your love is my strength, my happiness, and my entire world. This small gift carries big emotions just for you 💖";
+let index = 0;
+
+function startTyping() {
+  if (index < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(startTyping, 60);
   }
 }
+
 
 /* SLIDESHOW */
 let slideIndex = 0;
@@ -109,4 +116,38 @@ function createFallingHeart() {
     heart.style.transform = "translateY(100vh) rotate(360deg)";
     heart.style.top = "100vh";
   }, 100);
+}
+const intro = document.getElementById("intro");
+const main = document.getElementById("main");
+const bgm = document.getElementById("bgm");
+const startBtn = document.getElementById("startBtn");
+
+/* Start Button */
+startBtn.addEventListener("click", () => {
+  bgm.volume = 0.6;
+  bgm.play();
+
+  intro.style.opacity = "0";
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    main.style.display = "block";
+    startTyping();
+    startSlides();
+    createHearts();
+  }, 1500);
+});
+/* Floating Hearts */
+function createHearts() {
+  setInterval(() => {
+    let heart = document.createElement("span");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+    document.querySelector(".hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+  }, 250);
 }
