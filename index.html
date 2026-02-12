@@ -1,54 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.">
-<<title>For My Lovely Parents ❤️</title>
-  <link rel="stylesheet" href="style.css">
+  <title>TEST</title>
 </head>
 <body>
 
-<audio id="bgm" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<button onclick="test()">START</button>
 
-<audio id="heartMusic" loop>
-  <source src="heart-music.mp3" type="audio/mpeg">
-</audio>
+<script>
+function test(){
+  alert("WORKING");
+}
+</script>
 
-<div class="cinematic-intro" id="intro">
-  <h1 class="cinema-title">💖 A Love Story 💖</h1>
-  <p>Dedicated to the most beautiful parents in the world</p>
-  <button id="startBtn">▶ Start</button>
-</div>
-
-<div class="hearts"></div>
-
-<div class="container hidden" id="main">
-
-  <h1>💖 Happy Valentine’s Week 💖</h1>
-  <h2>To My Loving Parents</h2>
-
-  <p class="intro" id="typewriter"></p>
-
-  <div class="slideshow">
-    <img class="slides" src="img1.jpg">
-    <img class="slides" src="img2.jpg">
-    <img class="slides" src="img3.jpg">
-  </div>
-
-  <button onclick="showSurprise()">💖 Open My Heart</button>
-
-  <div id="surprise" class="hidden">
-    <h2>Will you open my heart? 💖</h2>
-    <div class="btn-box">
-      <button id="yesBtn">Yes 💕</button>
-      <button id="noBtn">No 💔</button>
-    </div>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
