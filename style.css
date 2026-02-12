@@ -22,20 +22,12 @@ body{
   justify-content:center;
   color:white;
   z-index:9999;
-  animation:fadeIn 2s ease;
 }
 
 .cinema-title{
-  font-family:'Great Vibes',cursive;
   font-size:60px;
   margin-bottom:15px;
   animation:glow 2s infinite alternate;
-}
-
-.cinematic-intro p{
-  font-size:18px;
-  opacity:.8;
-  margin-bottom:30px;
 }
 
 #startBtn{
@@ -46,20 +38,13 @@ body{
   background:linear-gradient(45deg,#ff416c,#ff4b2b);
   color:white;
   cursor:pointer;
-  box-shadow:0 0 20px rgba(255,75,75,.8);
-  transition:.3s;
 }
 
-#startBtn:hover{
-  transform:scale(1.1);
-}
-
-/* Main */
 .container{
   text-align:center;
   padding:30px;
   color:#fff;
-  display:none;
+  display:block;
   animation:fadeUp 1.5s ease;
 }
 
@@ -67,23 +52,6 @@ body{
   display:none;
 }
 
-h1{
-  font-family:'Great Vibes',cursive;
-  font-size:55px;
-  color:#ff4b7d;
-}
-
-h2{
-  margin-top:10px;
-}
-
-.intro{
-  margin:20px auto;
-  font-size:20px;
-  max-width:600px;
-}
-
-/* Slideshow */
 .slideshow{
   width:280px;
   height:280px;
@@ -91,7 +59,6 @@ h2{
   border-radius:50%;
   overflow:hidden;
   border:6px solid white;
-  box-shadow:0 0 20px rgba(255,255,255,.8);
 }
 
 .slides{
@@ -101,48 +68,35 @@ h2{
   display:none;
 }
 
-/* Hearts */
 .hearts span{
   position:fixed;
   bottom:-50px;
-  font-size:24px;
   animation:float 10s linear infinite;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);opacity:1}
-  100%{transform:translateY(-110vh);opacity:0}
+  to{transform:translateY(-110vh);opacity:0}
 }
 
-/* Animations */
-@keyframes glow{
-  from{text-shadow:0 0 10px pink;}
-  to{text-shadow:0 0 30px hotpink;}
-}
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* Petals Heart */
 .petals span{
   position:fixed;
   top:-80px;
   left:50%;
   transform:translateX(-50%);
   font-size:70px;
-  animation:
-    cinematicFall 6s cubic-bezier(0.22,0.61,0.36,1) forwards,
-    glow 2s ease-in-out infinite alternate;
+  animation:cinematicFall 6s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 @keyframes cinematicFall{
-  from{transform:translate(-50%,-80px) scale(0.8);opacity:0}
-  to{transform:translate(-50%,110vh) scale(1.05);opacity:1}
+  to{transform:translate(-50%,110vh)}
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px pink;}
+  to{text-shadow:0 0 30px hotpink;}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
 }
