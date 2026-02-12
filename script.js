@@ -5,25 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.getElementById("main");
   const bgm = document.getElementById("bgm");
 
-  /* START BUTTON */
- startBtn.addEventListener("click", () => {
-  bgm.volume = 0.6;
-  bgm.muted = false;
-  bgm.play().catch(() => {});
+  startBtn.addEventListener("click", () => {
+    bgm.volume = 0.6;
+    bgm.play().catch(()=>{});
 
-  intro.style.opacity = "0";
+    intro.style.opacity = "0";
 
-  setTimeout(() => {
-    intro.style.display = "none";
-    main.classList.remove("hidden");
-    startTyping();
-    startSlides();
-    createHearts();
-  }, 1200);
+    setTimeout(() => {
+      intro.style.display = "none";
+      main.classList.remove("hidden");
+      startTyping();
+      startSlides();
+      createHearts();
+    }, 1200);
+  });
+
 });
 
-
-/* TYPEWRITER */
 const text = "Mummy & Papa, your love is my strength, my happiness, and my entire world. This small gift carries big emotions just for you 💖";
 let index = 0;
 
@@ -35,8 +33,6 @@ function startTyping() {
   }
 }
 
-
-/* SLIDESHOW */
 let slideIndex = 0;
 
 function startSlides() {
@@ -50,8 +46,6 @@ function startSlides() {
   setTimeout(startSlides, 2500);
 }
 
-
-/* HEART BACKGROUND */
 function createHearts() {
   setInterval(() => {
     let heart = document.createElement("span");
@@ -66,8 +60,6 @@ function createHearts() {
   }, 250);
 }
 
-
-/* SHOW SURPRISE */
 function showSurprise() {
   document.getElementById("surprise").classList.remove("hidden");
 
@@ -76,17 +68,13 @@ function showSurprise() {
   const heartMusic = document.getElementById("heartMusic");
   const bgm = document.getElementById("bgm");
 
-  /* YES BUTTON */
-  yesBtn.addEventListener("click", () => {
+  yesBtn.onclick = () => {
     bgm.pause();
-
-    heartMusic.currentTime = 0;
     heartMusic.volume = 0.7;
-    heartMusic.play();
+    heartMusic.play().catch(()=>{});
 
     document.getElementById("surprise").innerHTML = `
       <h1>My Heart Is Open For You 💐</h1>
-      <div class="flower"></div>
       <div class="petals"></div>
     `;
 
@@ -95,41 +83,21 @@ function showSurprise() {
     setTimeout(() => {
       window.location.href = "message.html";
     }, 6000);
-  });
+  };
 
-  /* NO BUTTON FLOAT */
-  noBtn.addEventListener("mouseenter", () => {
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
+  noBtn.onmouseenter = () => {
     noBtn.style.position = "absolute";
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-  });
+    noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 120) + "px";
+  };
 
-  setTimeout(() => {
-    noBtn.style.display = "none";
-  }, 4000);
+  setTimeout(() => noBtn.style.display = "none", 4000);
 }
 
-
-/* SINGLE CINEMATIC FALLING HEART */
 function createSingleFallingHeart() {
   const box = document.querySelector(".petals");
-  if (!box) return;
 
   const heart = document.createElement("span");
   heart.innerHTML = "💖";
-  heart.style.position = "absolute";
-  heart.style.left = "50%";
-  heart.style.top = "-80px";
-  heart.style.fontSize = "70px";
-  heart.style.opacity = 0.9;
-  heart.style.transition = "transform 6s ease-in-out";
-
   box.appendChild(heart);
-
-  setTimeout(() => {
-    heart.style.transform = "translateY(110vh) rotate(360deg)";
-  }, 100);
 }
-
