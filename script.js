@@ -6,21 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const bgm = document.getElementById("bgm");
 
   /* START BUTTON */
-  startBtn.addEventListener("click", () => {
-    bgm.volume = 0.6;
-    bgm.play();
+ startBtn.addEventListener("click", () => {
+  bgm.volume = 0.6;
+  bgm.muted = false;
+  bgm.play().catch(() => {});
 
-    intro.style.opacity = "0";
+  intro.style.opacity = "0";
 
-    setTimeout(() => {
-      intro.style.display = "none";
-      main.classList.remove("hidden");
-      startTyping();
-      startSlides();
-      createHearts();
-    }, 1200);
-  });
-
+  setTimeout(() => {
+    intro.style.display = "none";
+    main.classList.remove("hidden");
+    startTyping();
+    startSlides();
+    createHearts();
+  }, 1200);
 });
 
 
@@ -133,3 +132,4 @@ function createSingleFallingHeart() {
     heart.style.transform = "translateY(110vh) rotate(360deg)";
   }, 100);
 }
+
