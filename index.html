@@ -8,43 +8,36 @@
 </head>
 <body>
 
-<audio id="bgm" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgm" src="music.mp3" preload="auto" loop></audio>
+<audio id="heartMusic" src="heart-music.mp3" preload="auto"></audio>
 
-<audio id="heartMusic" loop>
-  <source src="heart-music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="cinematic-intro" id="intro">
+<div id="intro" class="cinematic-intro">
   <h1 class="cinema-title">💖 A Love Story 💖</h1>
-  <p>Dedicated to the most beautiful parents in the world</p>
-  <button id="startBtn">▶ Start</button>
+  <p class="cinema-sub">Dedicated to the most beautiful parents</p>
+  <button id="startBtn">▶ Start The Movie</button>
 </div>
 
 <div class="hearts"></div>
 
-<div class="container hidden" id="main">
+<div id="main" class="container hidden">
 
-  <h1>💖 Happy Valentine’s Week 💖</h1>
+  <h1 class="main-title">Happy Valentine’s Week 💖</h1>
   <h2>To My Loving Parents</h2>
 
-  <p class="intro" id="typewriter"></p>
+  <p id="typewriter" class="intro"></p>
 
   <div class="slideshow">
-    <img class="slides" src="img1.jpg">
-    <img class="slides" src="img2.jpg">
-    <img class="slides" src="img3.jpg">
+    <img src="img1.jpg" class="slides">
+    <img src="img2.jpg" class="slides">
+    <img src="img3.jpg" class="slides">
   </div>
 
-  <button onclick="showSurprise()">💖 Open My Heart</button>
+  <button class="heart-btn" onclick="showSurprise()">💖 Open My Heart</button>
 
   <div id="surprise" class="hidden">
     <h2>Will you open my heart? 💖</h2>
-    <div class="btn-box">
-      <button id="yesBtn">Yes 💕</button>
-      <button id="noBtn">No 💔</button>
-    </div>
+    <button id="yesBtn" class="yes">Yes 💕</button>
+    <button id="noBtn" class="no">No 💔</button>
   </div>
 
 </div>
