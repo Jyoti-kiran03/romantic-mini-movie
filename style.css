@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
 *{
   margin:0;
   padding:0;
@@ -6,59 +8,83 @@
 }
 
 body{
-  background:radial-gradient(circle,#ffdee9,#b5fffc);
-  overflow:hidden;
+  background:radial-gradient(circle at top,#ffdee9,#b5fffc);
   height:100vh;
+  overflow:hidden;
 }
 
-/* Cinematic Intro */
+/* CINEMATIC INTRO */
 .cinematic-intro{
   position:fixed;
   inset:0;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  background:linear-gradient(135deg,#020024,#090979,#00d4ff);
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  color:white;
-  z-index:9999;
+  align-items:center;
+  color:#fff;
+  animation:introZoom 2.5s ease forwards;
+  z-index:10;
 }
 
 .cinema-title{
-  font-size:60px;
-  margin-bottom:15px;
+  font-family:'Great Vibes',cursive;
+  font-size:70px;
   animation:glow 2s infinite alternate;
 }
 
+.cinema-sub{
+  margin-top:10px;
+  opacity:.8;
+  letter-spacing:1px;
+}
+
 #startBtn{
-  padding:15px 45px;
+  margin-top:35px;
+  padding:16px 55px;
   font-size:20px;
   border:none;
   border-radius:40px;
   background:linear-gradient(45deg,#ff416c,#ff4b2b);
   color:white;
   cursor:pointer;
+  box-shadow:0 0 25px rgba(255,75,75,.8);
+  transition:.3s;
 }
 
+#startBtn:hover{transform:scale(1.1);}
+
+/* MAIN */
 .container{
+  display:none;
   text-align:center;
   padding:30px;
-  color:#fff;
-  display:block;
-  animation:fadeUp 1.5s ease;
+  animation:fadeUp 2s ease;
 }
 
-.hidden{
-  display:none;
+.hidden{display:none;}
+
+.main-title{
+  font-family:'Great Vibes',cursive;
+  font-size:60px;
+  color:#ff4b7d;
 }
 
+.intro{
+  margin:25px auto;
+  font-size:20px;
+  max-width:600px;
+}
+
+/* SLIDESHOW */
 .slideshow{
-  width:280px;
-  height:280px;
-  margin:30px auto;
+  width:300px;
+  height:300px;
   border-radius:50%;
   overflow:hidden;
+  margin:35px auto;
   border:6px solid white;
+  box-shadow:0 0 30px rgba(255,255,255,.9);
 }
 
 .slides{
@@ -68,35 +94,51 @@ body{
   display:none;
 }
 
+/* HEART RAIN */
 .hearts span{
   position:fixed;
-  bottom:-50px;
-  animation:float 10s linear infinite;
+  bottom:-60px;
+  font-size:25px;
+  animation:float 12s linear infinite;
 }
 
+/* BUTTONS */
+.heart-btn,.yes,.no{
+  padding:12px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  margin:15px;
+}
+
+.heart-btn,.yes{
+  background:linear-gradient(45deg,#ff416c,#ff4b2b);
+  color:white;
+}
+
+.no{
+  background:#555;
+  color:white;
+}
+
+/* ANIMATIONS */
 @keyframes float{
-  to{transform:translateY(-110vh);opacity:0}
-}
-
-.petals span{
-  position:fixed;
-  top:-80px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:70px;
-  animation:cinematicFall 6s cubic-bezier(.22,.61,.36,1) forwards;
-}
-
-@keyframes cinematicFall{
-  to{transform:translate(-50%,110vh)}
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
 }
 
 @keyframes glow{
-  from{text-shadow:0 0 10px pink;}
-  to{text-shadow:0 0 30px hotpink;}
+  from{text-shadow:0 0 10px hotpink;}
+  to{text-shadow:0 0 35px deeppink;}
 }
 
 @keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
+  from{opacity:0;transform:translateY(50px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes introZoom{
+  from{transform:scale(1.2);filter:blur(5px);}
+  to{transform:scale(1);filter:blur(0);}
 }
